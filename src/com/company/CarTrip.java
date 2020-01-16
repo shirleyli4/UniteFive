@@ -36,7 +36,7 @@ public class CarTrip {
         return myTime;
     }
 
-    public void setMyStartOdometer(double myStartOdometer) {
+    /* public void setMyStartOdometer(double myStartOdometer) {
         this.myStartOdometer = myStartOdometer;
     }
 
@@ -51,7 +51,7 @@ public class CarTrip {
     public void setMyTime(double myTime) {
         this.myTime = myTime;
     }
-
+*/
     double getTripDistance(){
         return myEndOdometer-myStartOdometer;
     }
