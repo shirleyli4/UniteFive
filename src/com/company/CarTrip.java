@@ -36,7 +36,7 @@ public class CarTrip {
         return myTime;
     }
 
-    /* public void setMyStartOdometer(double myStartOdometer) {
+    public void setMyStartOdometer(double myStartOdometer) {
         this.myStartOdometer = myStartOdometer;
     }
 
@@ -51,19 +51,29 @@ public class CarTrip {
     public void setMyTime(double myTime) {
         this.myTime = myTime;
     }
-*/
+
     double getTripDistance(){
         return myEndOdometer-myStartOdometer;
     }
 
     double getAverageSpeed(){
-        double ave=(myEndOdometer-myStartOdometer)/myTime;
-        return ave;
+        if (myTime == 0) {
+            double ave=(myEndOdometer-myStartOdometer)/(1+myTime);
+            return ave;
+        }else{
+            double ave=(myEndOdometer-myStartOdometer)/myTime;
+            return ave;
+        }
     }
 
     double getGasMileage(){
-        double gm=(myEndOdometer-myStartOdometer)/myGallonsUsed;
-        return gm;
+        if(myGallonsUsed==0){
+            double gm = (myEndOdometer - myStartOdometer) / (1+myGallonsUsed);
+            return gm;
+        }else {
+            double gm = (myEndOdometer - myStartOdometer) / myGallonsUsed;
+            return gm;
+        }
     }
 
     double getTotalGasPrice(double pricePerGallon){
