@@ -20,8 +20,65 @@ public class Truck {
         fuel = fu;
     }
 
+    public String getTruckID() {
+        return truckID;
+    }
 
+    public double getOdometer() {
+        return odometer;
+    }
 
+    public double getMpg() {
+        return mpg;
+    }
 
+    public double getFuel() {
+        return fuel;
+    }
 
+    public void setMpg(double mpg) {
+        this.mpg = mpg;
+    }
+
+    private boolean enoughFuel(double mile){
+        double need = mile/mpg;
+        if(fuel<need){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    private String drive(double runMile){
+        odometer+=runMile;
+        fuel-=runMile/mpg;
+        if(fuel+runMile/mpg<runMile/mpg){
+            return "Error";
+        }else{
+            return "success";
+        }
+    }
+
+    private static void fill(){
+        totalFuel=20;
+    }
+
+    private static String fill(double fi){
+        totalFuel+=fi;
+        if(totalFuel<=20){
+            return "success";
+        }else{
+            totalFuel-=fi;
+            return "fail";
+        }
+    }
+
+    public static double getTotalFuel() {
+        return totalFuel;
+    }
+
+    public String toString() {
+        return "Truck: ";
+    }
 }
