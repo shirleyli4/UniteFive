@@ -51,27 +51,27 @@ public class Truck {
 
     }
 
-    private String drive(double runMile){
+    public String drive(double runMile){
         odometer+=runMile;
         fuel-=runMile/mpg;
         if(fuel+runMile/mpg<runMile/mpg){
-            return "Truck "+ truckID+" does not have enough fuel to drive 500.0 miles";
+            return "Truck "+ truckID+" does not have enough fuel to drive 500.0 miles.";
         }else{
             return "success";
         }
     }
 
-    private static void fill(){
-        totalFuel=20;
+    public void fill(){
+        fuel=CAPACITY;
     }
 
-    private static String fill(double fi){
+    public String fill(double fi){
         totalFuel+=fi;
-        if(totalFuel<=20){
+        if(totalFuel<=CAPACITY){
             return "success";
         }else{
             totalFuel-=fi;
-            return "fail";
+            return "Truck "+truckID+": Gallons exceeds tank capacity";
         }
     }
 
@@ -80,6 +80,6 @@ public class Truck {
     }
 
     public String toString() {
-        return "Truck: "+truckID+"/nOdometer: "+ odometer+"/nMiles Per Gallon: "+mpg+"/nFuel: "+fuel;
+        return "Truck: "+truckID+"\n"+"Odometer: "+ odometer+"\n"+"Miles Per Gallon: "+mpg+"\n"+"Fuel: "+fuel;
     }
 }

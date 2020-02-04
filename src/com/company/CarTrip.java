@@ -1,3 +1,9 @@
+/*
+@author Shirley Shuzhou Li
+@since Febuary 4 2020
+ */
+
+
 package com.company;
 
 public class CarTrip {
@@ -5,6 +11,10 @@ public class CarTrip {
     private double myEndOdometer;
     private double myTime;
     private double myGallonsUsed;
+
+    /*
+
+     */
 
     public CarTrip(double sta, double end, double time, double gal){
         myStartOdometer=sta;
