@@ -52,19 +52,20 @@ public class Truck {
     }
 
     public String drive(double runMile){
-        if(fuel-(runMile/mpg)<(runMile/mpg)){
+        boolean condi = enoughFuel(runMile);
+        if(condi==false){
             return "Truck "+ truckID+" does not have enough fuel to drive "+runMile+" miles.";
         }else{
-            odometer+=runMile;
             fuel-=runMile/mpg;
             totalFuel+=runMile/mpg;
+            odometer+=runMile;
             return "success";
         }
     }
 
     public void fill(){
         fuel=CAPACITY;
-        totalFuel+=CAPACITY;
+        totalFuel+=CAPACITY-fuel;
     }
 
     public String fill(double fi){
@@ -78,7 +79,7 @@ public class Truck {
     }
 
     public static double getTotalFuel() {
-        return totalFuel;
+        return (int)totalFuel;
     }
 
     public String toString() {
