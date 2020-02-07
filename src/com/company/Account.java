@@ -12,7 +12,7 @@ public class Account {
         this.balance=balance;
     }
     public Account(Account dup){
-        dup = new Account (this.first,this.last,this.balance);
+        this(dup.first,dup.last,dup.balance);
     }
     public Account(){
         acctNum=(int)(Math.random()*999)+1;
@@ -49,6 +49,16 @@ public class Account {
     }
 
     public boolean withdrawal(double sub){
+        if(sub<=balance){
+            balance-=sub;
+            return true;
+        }else{
+            return false;
+        }
+    }
 
+
+    public String toString() {
+        return "Customer Name: "+first+" "+last+"\nAccount #: "+acctNum+"\nCurrent Balance: $"+balance;
     }
 }
