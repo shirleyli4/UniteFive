@@ -15,6 +15,7 @@ public class Account {
         dup = new Account (this.first,this.last,this.balance);
     }
     public Account(){
+        acctNum=(int)(Math.random()*999)+1;
         this.first="";
         this.last="";
         this.balance=0;
@@ -34,5 +35,20 @@ public class Account {
 
     public String getLast() {
         return last;
+    }
+
+    public int getAcctNum() {
+        return acctNum;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+    public void deposit(double money){
+        balance+=money;
+    }
+
+    public boolean withdrawal(double sub){
+
     }
 }
