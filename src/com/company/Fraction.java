@@ -5,24 +5,24 @@ package com.company;
  *
  */
 public class Fraction {
-    /**
-     * @param
-     * @return
-     */
     private int numerator;
     private int denominator;
-
     /**
      *
      * @param nu
      * @param de
-     * @return
      */
     public Fraction(int nu,int de){
         numerator=nu;
         denominator=de;
         negaandreduce(nu,de);
     }
+
+    /**
+     *
+     * @param nu
+     * @param de
+     */
     public void negaandreduce(int nu,int de){
         int m=de;
         int n=nu;
@@ -43,6 +43,12 @@ public class Fraction {
         denominator=de;
     }
 
+    /**
+     *
+     * @param m
+     * @param n
+     * @return
+     */
     private int gcd(int m, int n) {
         while (m % n != 0) {
             int oldm = m;
@@ -54,9 +60,19 @@ public class Fraction {
         return n;
     }
 
+    /**
+     *
+     */
     public Fraction(){
         this(1,1);
     }
+
+    /**
+     *
+     * @param f1
+     * @param f2
+     * @return
+     */
     public static Fraction add(Fraction f1, Fraction f2){
         if(f1.denominator==f2.denominator){
             int newnum=f1.numerator+f2.numerator;
@@ -69,6 +85,13 @@ public class Fraction {
             return ret;
         }
     }
+
+    /**
+     *
+     * @param f1
+     * @param f2
+     * @return
+     */
     public static Fraction subtract(Fraction f1,Fraction f2){
         if(f1.denominator==f2.denominator){
             int newnum=f1.numerator-f2.numerator;
@@ -81,12 +104,26 @@ public class Fraction {
             return ret;
         }
     }
+
+    /**
+     *
+     * @param f1
+     * @param f2
+     * @return
+     */
     public static Fraction multiply(Fraction f1, Fraction f2){
         int newnu=f1.numerator*f2.numerator;
         int newde=f1.denominator*f2.denominator;
         Fraction ret= new Fraction(newnu,newde);
         return ret;
     }
+
+    /**
+     *
+     * @param f1
+     * @param f2
+     * @return
+     */
     public static Fraction divide(Fraction f1, Fraction f2){
         int newnu=f1.numerator*f2.denominator;
         int newde=f1.denominator*f2.numerator;
@@ -94,6 +131,10 @@ public class Fraction {
         return ret;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return numerator+"/"+denominator;
