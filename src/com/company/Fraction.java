@@ -1,5 +1,6 @@
 package com.company;
 /**
+ *This program can do calculations between two Fractions, such as addition, subtraction, multiplication, and division
  * @author Shirley Shuzhou Li
  * @since February 10,2020
  *
@@ -8,7 +9,7 @@ public class Fraction {
     private int numerator;
     private int denominator;
     /**
-     *
+     *constructor
      * @param nu
      * @param de
      */
@@ -19,7 +20,7 @@ public class Fraction {
     }
 
     /**
-     *
+     *reduce the fraction and make the negative sign to numerator
      * @param nu
      * @param de
      */
@@ -44,7 +45,7 @@ public class Fraction {
     }
 
     /**
-     *
+     *greatest common factor
      * @param m
      * @param n
      * @return
@@ -61,14 +62,14 @@ public class Fraction {
     }
 
     /**
-     *
+     *Constructor
      */
     public Fraction(){
         this(1,1);
     }
 
     /**
-     *
+     *addition between two fraction
      * @param f1
      * @param f2
      * @return
@@ -87,7 +88,7 @@ public class Fraction {
     }
 
     /**
-     *
+     *subtraction between two fraction
      * @param f1
      * @param f2
      * @return
@@ -106,7 +107,7 @@ public class Fraction {
     }
 
     /**
-     *
+     *multiply two fractions
      * @param f1
      * @param f2
      * @return
@@ -119,7 +120,7 @@ public class Fraction {
     }
 
     /**
-     *
+     *divide two fractions
      * @param f1
      * @param f2
      * @return
@@ -132,7 +133,7 @@ public class Fraction {
     }
 
     /**
-     *
+     *toString printing method
      * @return
      */
     @Override
