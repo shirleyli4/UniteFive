@@ -1,115 +1,97 @@
 package com.company;
-
+/**
+ * @author Shirley Shuzhou Li
+ * @since February 10,2020
+ *
+ */
 public class Fraction {
+    /**
+     * @param
+     * @return
+     */
     private int numerator;
     private int denominator;
+
+    /**
+     *
+     * @param nu
+     * @param de
+     * @return
+     */
     public Fraction(int nu,int de){
-        nega(nu,de);
-        reduce(nu,de);
+        numerator=nu;
+        denominator=de;
+        negaandreduce(nu,de);
+    }
+    public void negaandreduce(int nu,int de){
+        int m=de;
+        int n=nu;
+        while (m % n != 0) {
+            int oldm = m;
+            int oldn = n;
+
+            m = oldn;
+            n = oldm % oldn;
+        }
+        nu/=n;
+        de/=n;
+        if(de<0){
+            de*=-1;
+            nu*=-1;
+        }
         numerator=nu;
         denominator=de;
     }
-    public static void nega(int nu,int de){
-        if(de<0){
-            de*=-1;
-            nu+=-1;
+
+    private int gcd(int m, int n) {
+        while (m % n != 0) {
+            int oldm = m;
+            int oldn = n;
+
+            m = oldn;
+            n = oldm % oldn;
         }
+        return n;
     }
-    public static void reduce(int nu, int de){
-        if(de%nu==0){
-            int mul=de/nu;
-            nu/=mul;
-            de/=mul;
-        }
-    }
+
     public Fraction(){
         this(1,1);
     }
     public static Fraction add(Fraction f1, Fraction f2){
         if(f1.denominator==f2.denominator){
             int newnum=f1.numerator+f2.numerator;
-            reduce(newnum,f1.denominator);
             Fraction ret = new Fraction(newnum,f1.denominator);
             return ret;
-        }else if(f1.denominator%f2.denominator==0){
-           int mul=f1.denominator/f2.denominator;
-           f1.denominator*=mul;
-           f1.numerator*=mul;
-           int newnum=f1.numerator+f2.numerator;
-           reduce(newnum,f1.denominator);
-           Fraction ret = new Fraction(newnum,f1.denominator);
-           return ret;
         }else{
-            f1.numerator*=f2.denominator;
-            f2.numerator*=f1.denominator;
-            int newnum=f1.numerator+f2.numerator;
-            f1.denominator*=f2.denominator;
-            reduce(newnum,f1.denominator);
-            Fraction ret = new Fraction(newnum,f1.denominator);
+            int newnum=f1.numerator*f2.denominator+f2.numerator*f1.denominator;
+            int newde=f1.denominator*f2.denominator;
+            Fraction ret = new Fraction(newnum,newde);
             return ret;
         }
     }
     public static Fraction subtract(Fraction f1,Fraction f2){
-        int f1num=f1.numerator;
-        int f2num=f2.numerator;
-        f1num*=f2.denominator;
-        f2num*=f1.denominator;
-        if(f1num<f2num){
-            if(f1.denominator==f2.denominator){
-                int newnum=f2.numerator+-f1.numerator;
-                reduce(newnum,f1.denominator);
-                Fraction ret = new Fraction(newnum,f1.denominator);
-                return ret;
-            }else if(f1.denominator%f2.denominator==0){
-                int mul=f1.denominator/f2.denominator;
-                f1.denominator*=mul;
-                f1.numerator*=mul;
-                int newnum=f2.numerator-f1.numerator;
-                reduce(newnum,f1.denominator);
-                Fraction ret = new Fraction(newnum,f1.denominator);
-                return ret;
-            }else{
-                f1.numerator*=f2.denominator;
-                f2.numerator*=f1.denominator;
-                int newnum=f2.numerator-f1.numerator;
-                f1.denominator*=f2.denominator;
-                reduce(newnum,f1.denominator);
-                Fraction ret = new Fraction(newnum,f1.denominator);
-                return ret;
-            }
-        }else if(f2num<f1num){
-            if(f1.denominator==f2.denominator){
-                int newnum=f1.numerator-f2.numerator;
-                reduce(newnum,f1.denominator);
-                Fraction ret = new Fraction(newnum,f1.denominator);
-                return ret;
-            }else if(f1.denominator%f2.denominator==0){
-                int mul=f1.denominator/f2.denominator;
-                f1.denominator*=mul;
-                f1.numerator*=mul;
-                int newnum=f1.numerator-f2.numerator;
-                reduce(newnum,f1.denominator);
-                Fraction ret = new Fraction(newnum,f1.denominator);
-                return ret;
-            }else{
-                f1.numerator*=f2.denominator;
-                f2.numerator*=f1.denominator;
-                int newnum=f1.numerator-f2.numerator;
-                f1.denominator*=f2.denominator;
-                reduce(newnum,f1.denominator);
-                Fraction ret = new Fraction(newnum,f1.denominator);
-                return ret;
-            }
+        if(f1.denominator==f2.denominator){
+            int newnum=f1.numerator-f2.numerator;
+            Fraction ret = new Fraction(newnum,f1.denominator);
+            return ret;
         }else{
-            Fraction ret = new Fraction(0,1);
+            int newnum=f1.numerator*f2.denominator-f2.numerator*f1.denominator;
+            int newde=f1.denominator*f2.denominator;
+            Fraction ret = new Fraction(newnum,newde);
             return ret;
         }
     }
     public static Fraction multiply(Fraction f1, Fraction f2){
-    return f1;
+        int newnu=f1.numerator*f2.numerator;
+        int newde=f1.denominator*f2.denominator;
+        Fraction ret= new Fraction(newnu,newde);
+        return ret;
     }
     public static Fraction divide(Fraction f1, Fraction f2){
-        return f1;
+        int newnu=f1.numerator*f2.denominator;
+        int newde=f1.denominator*f2.numerator;
+        Fraction ret= new Fraction(newnu,newde);
+        return ret;
     }
 
     @Override
